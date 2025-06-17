@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Post</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/darkly/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            .float {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                border-radius: 15px;
+                padding: 40px;
+                background-color: #2a2a2a;
+                max-width: 900px;
+                margin: 80px auto;
+            }
+
+            input::placeholder,
+            textarea::placeholder {
+                color: #6b6a6a !important;
+                opacity: 1 !important;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}">Blog</a>
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'index' %}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'yourPosts' %}">Your Posts</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="float">
+            <h1 class="text-center">Add Post</h1>
+            <hr />
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title" style="padding-bottom: 10px">Title</label>
+                    <input type="text" class="form-control" id="title" placeholder="Enter the title........" name="title" required />
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="subTitle" style="padding-bottom: 10px">SubTitle</label>
+                    <input type="text" class="form-control" id="subTitle" placeholder="Enter the Sub-Title........" name="subTitle" required />
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="discription" style="padding-bottom: 10px">Discription</label>
+                    <textarea type="text" class="form-control" id="discription" rows="5" placeholder="Enter the discription........" name="discription" required></textarea>
+                </div>
+            </form>
+            <br />
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76A2z02tPqdjN2v+6UutHhn3KfF5FjKX9ZHp6S5aYZb8+L0n00qlcE0LQ91b6ZD" crossorigin="anonymous"></script>
+    </body>
+</html>
