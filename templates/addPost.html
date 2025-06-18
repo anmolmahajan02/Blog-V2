@@ -20,6 +20,14 @@
                 color: #6b6a6a !important;
                 opacity: 1 !important;
             }
+            input[type="file"]::file-selector-button {
+                background-color: #0275d8; /* Bootstrap primary color */
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
@@ -45,7 +53,7 @@
         <div class="float">
             <h1 class="text-center">Add Post</h1>
             <hr />
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="title" style="padding-bottom: 10px">Title</label>
@@ -61,11 +69,16 @@
                     <label for="discription" style="padding-bottom: 10px">Discription</label>
                     <textarea type="text" class="form-control" id="discription" rows="5" placeholder="Enter the discription........" name="discription" required></textarea>
                 </div>
+                <br />
+                <div class="form-group">
+                    <label for="file" style="padding-bottom: 10px">Image</label>
+                    <input type="file" class="form-control" id="file" placeholder="Add image (optional)" name="image" style="color: black" />
+                </div>
+                <br />
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
             </form>
-            <br />
-            <div class="text-center">
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76A2z02tPqdjN2v+6UutHhn3KfF5FjKX9ZHp6S5aYZb8+L0n00qlcE0LQ91b6ZD" crossorigin="anonymous"></script>
     </body>

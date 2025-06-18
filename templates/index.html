@@ -48,6 +48,10 @@
                     <div class="card mb-3" style="width: 100%">
                         <div class="custom_card">
                             <div class="card-body">
+                                {% if post.image %}
+                                <img class="card-img-top" src="{{ post.image.url }}" alt="Post Image" />
+                                {% endif %}
+                                <br />
                                 <div class="card-title">{{post.title}}</div>
                                 <div class="card-subtitle mb-2 text-muted">{{post.subtitle|truncatewords:30}}</div>
                                 <p class="card-text">{{post.discription|truncatewords:30}}</p>

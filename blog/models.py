@@ -9,3 +9,4 @@ class post(models.Model):
     subtitle = models.CharField(max_length=300 , default="There is no discription")
     discription = models.TextField(max_length=10000)
     created_at = models.DateTimeField(default=datetime.now)
+    image = models.ImageField(upload_to='post_images', null=True , blank= True)
