@@ -7,7 +7,48 @@
         <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/darkly/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Working</h1>
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}">Blog</a>
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'index' %}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addPost' %}">Add Post</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container mt-4">
+            <div class="row">
+                {% for post in yourPost %}
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="card mb-3" style="width: 100%">
+                        <div class="custom_card">
+                            <div class="card-body">
+                                {% if post.image %}
+                                <img class="card-img-top" src="{{ post.image.url }}" alt="Post Image" />
+                                {% endif %}
+                                <br />
+                                <div class="card-title">{{post.title}}</div>
+                                <div class="card-subtitle mb-2 text-muted">{{post.subtitle|truncatewords:30}}</div>
+                                <p class="card-text">{{post.discription|truncatewords:30}}</p>
+                                <a href="#" class="card-link">Read more</a>
+                                <p class="card-text text-muted mt-4">~{{post.author}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76A2z02tPqdjN2v+6UutHhn3KfF5FjKX9ZHp6S5aYZb8+L0n00qlcE0LQ91b6ZD" crossorigin="anonymous"></script>
     </body>
 </html>

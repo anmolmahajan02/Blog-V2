@@ -57,10 +57,11 @@ def addPost(request):
         discription = request.POST.get("discription")
         image = request.FILES.get('image')
 
-        post.objects.create(user = request.user , title = title , subtitle = subTitle, discription = discription, image = image )
+        post.objects.create(author = request.user , title = title , subtitle = subTitle, discription = discription, image = image )
         return redirect('index')
     else:
         return render(request,'addPost.html')
 
 def yourPosts(request):
-    return render(request,'yourPosts.html')
+    yourPost = post.objects.filter(author = request.user)
+    return render(request,'yourPosts.html',{'yourPost':yourPost})
