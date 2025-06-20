@@ -65,3 +65,7 @@ def addPost(request):
 def yourPosts(request):
     yourPost = post.objects.filter(author = request.user)
     return render(request,'yourPosts.html',{'yourPost':yourPost})
+
+def fullPost(request,pk):
+    seeFullPost = post.objects.get(id = pk)
+    return render(request,'fullPost.html',{'post':seeFullPost})
