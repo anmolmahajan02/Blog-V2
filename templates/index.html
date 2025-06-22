@@ -36,8 +36,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'yourPosts' %}">Your Posts</a>
                     </li>
+
                     {% endif %}
                 </ul>
+                {% if request.user.is_authenticated %}
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'profile' %}" class="nav-link">{{user|capfirst}}</a>
+                    </li>
+                </ul>
+                {% endif %}
             </div>
         </nav>
 

@@ -8,7 +8,8 @@ from .models import post
 # Create your views here.
 def index(request):
     posts = post.objects.all()
-    return render(request,'index.html',{'posts':posts})
+    user = request.user
+    return render(request,'index.html',{'posts':posts ,'user':user})
 
 def register(request):
     if request.method == 'POST':
@@ -69,3 +70,7 @@ def yourPosts(request):
 def fullPost(request,pk):
     seeFullPost = post.objects.get(id = pk)
     return render(request,'fullPost.html',{'post':seeFullPost})
+
+def profile(request):
+    user = request.user
+    return render(request,'profile.html',{'user':user})

@@ -9,4 +9,5 @@ urlpatterns = [
     path('yourPosts', views.yourPosts ,name='yourPosts'),
     path('addPost', views.addPost ,name='addPost'),
     path('fullPost/<str:pk>',views.fullPost,name='fullPost'),
+    path('profile',views.profile,name='profile'),
 ]
