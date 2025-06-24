@@ -40,7 +40,8 @@
                                 <div class="card-title">{{post.title}}</div>
                                 <div class="card-subtitle mb-2 text-muted">{{post.subtitle|truncatewords:30}}</div>
                                 <p class="card-text">{{post.discription|truncatewords:30}}</p>
-                                <a href="#" class="card-link">Read more</a>
+                                <a href="{% url 'fullPost' post.id %}" class="card-link">Read more</a>
+                                <a href="{% url 'delete' post.id %}" class="card-link">Delete Post</a>
                                 <p class="card-text text-muted mt-4">~{{post.author}}</p>
                             </div>
                         </div>

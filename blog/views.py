@@ -74,3 +74,8 @@ def fullPost(request,pk):
 def profile(request):
     user = request.user
     return render(request,'profile.html',{'user':user})
+
+def delete(request,delId):
+    delBlog = post.objects.get(id = delId)
+    delBlog.delete()
+    return redirect('yourPosts')
